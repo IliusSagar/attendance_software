@@ -15,8 +15,12 @@ use App\Http\Controllers\Backend\AdminController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.login');
 });
 
 // backend routes
