@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Backend\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// backend routes
+Route::get('/admin/login', [AdminController::class, 'adminLoginForm'])->name('admin.login.form');
+Route::post('/admin-login', [AdminController::class, 'adminLogin'])->name('admin.login');
+
+
+Route::group(['middleware'=>'admin'],function(){
+    Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard'])->name('admin.dashboard');
+    Route::get('/admin/logout', [AdminController::class, 'adminLogout'])->name('admin.logout');
 });
 
 Auth::routes();
