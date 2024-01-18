@@ -5,7 +5,7 @@
           $year = date("Y");
           echo $year;
           ?></span>
-        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.sheraziit.com/" target="_blank">Sherazi IT</a> </span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">  <a href="https://www.sheraziit.com/" target="_blank">Sherazi IT</a> </span>
       </div>
     </div>
   </footer>
