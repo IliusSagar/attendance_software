@@ -15,6 +15,7 @@
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{ route('designation.view')}}">Designation</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{ route('employee.registration.view')}}">Employee Registration</a></li>
             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Employee Salary</a></li>
             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Employee Leave</a></li>

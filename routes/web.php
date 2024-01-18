@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EmployeeRegController;
 
 /*
@@ -32,6 +33,14 @@ Route::post('/admin-login', [AdminController::class, 'adminLogin'])->name('admin
 Route::group(['middleware'=>'admin'],function(){
     Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'adminLogout'])->name('admin.logout');
+
+    // Designation All Routes
+    Route::get('/designation/view', [DesignationController::class, 'ViewDesignation'])->name('designation.view');
+    Route::get('/designation/add', [DesignationController::class, 'DesignationAdd'])->name('designation.add');
+    Route::post('/designation/store', [DesignationController::class, 'DesignationStore'])->name('store.designation');
+    Route::get('/designation/delete/{id}', [DesignationController::class, 'DesignationDelete'])->name('designation.delete');
+    Route::get('/designation/edit/{id}', [DesignationController::class, 'DesignationEdit'])->name('designation.edit');
+    Route::post('/designation/update/{id}', [DesignationController::class, 'DesignationUpdate'])->name('update.designation');
 
     // Employee Registration Routes
     Route::get('reg/employee/view', [EmployeeRegController::class, 'EmployeeView'])->name('employee.registration.view');

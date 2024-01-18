@@ -196,11 +196,7 @@
 
                </div>
 
-            
-        
 
-              
-               
               
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 <a  class="btn btn-light" href="">Cancel</a>
