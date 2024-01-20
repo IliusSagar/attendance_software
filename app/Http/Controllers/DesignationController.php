@@ -9,7 +9,7 @@ class DesignationController extends Controller
 {
     public function ViewDesignation(){
 
-        $data['allData'] = Designation::all();
+        $data['allData'] = Designation::latest()->get();
         return view('backend.setup.designation.view_designation',$data);
   
 

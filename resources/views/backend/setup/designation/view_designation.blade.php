@@ -18,7 +18,7 @@
     </div>
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
-        <div class="card">
+        <div class="card table-responsive">
           <div class="card-body">
            
             </p>

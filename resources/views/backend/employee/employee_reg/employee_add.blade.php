@@ -15,7 +15,7 @@
           <div class="card">
             <div class="card-body">
           
-              <form class="forms-sample" action="#" method="post" > 
+              <form class="forms-sample" action="{{ route('store.employee.registration') }}" method="post" enctype="multipart/form-data"> 
                 @csrf 
 
                <div class="row">
@@ -64,6 +64,23 @@
                           
                       </div>
                 </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+
+                        <label class="form-label">Email <span class="text-danger">*</span></label>
+                        <input type="text" name="email" class="form-control" required="" >
+              
+                        <span style="color: red;">
+                          @error('email')
+                              {{$message}}
+                          @enderror
+                          </span>
+                          
+                      </div>
+                </div>
+
+             
 
                 <div class="col-md-4">
                     <div class="form-group">
@@ -140,14 +157,16 @@
                     <div class="form-group">
 
                         <label class="form-label">Designation<span class="text-danger">*</span></label>
-                        <select name="designation_id"  required class="form-control">
-                            <option value="" selected="" disabled="">Select Year</option>
-                         
-                        </select>   
+                        <select name="designation_id" required class="form-control">
+                            <option value="" selected="" disabled="">Select Designation</option>
+                           @foreach($designation as $desi)
+                            <option value="{{ $desi->id }}">{{ $desi->name }}</option>
+                          @endforeach
+                        </select>  
                       </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
 
                         <label class="form-label">Salary <span class="text-danger">*</span></label>
@@ -162,7 +181,7 @@
                       </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
 
                         <label class="form-label">Joining Date <span class="text-danger">*</span></label>
@@ -177,7 +196,7 @@
                       </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
 
                         <label class="form-label">Profile Image <span class="text-danger">*</span></label>
@@ -186,7 +205,7 @@
                       </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
 
                         <img id="showImage" src="{{ url('upload/no_image.jpg') }}" style="height: 100px; width: 100px; border: 1px solid #000000;">
