@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Designation;
+use App\Models\EmployeeSallaryLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -90,8 +91,52 @@ class EmployeeRegController extends Controller
 
         $admin->save();
 
+        $employee_salary = new EmployeeSallaryLog();
+        $employee_salary->employee_id = $admin->id;
+        $employee_salary->effected_salary = date('Y-m-d',strtotime($request->join_date));
+        $employee_salary->previous_salary = $request->salary;
+        $employee_salary->present_salary = $request->salary;
+        $employee_salary->increment_salary = '0';
+        $employee_salary->save();
+
         return redirect()->route('employee.registration.view')->with('success', 'Employee Registration Inserted Successfully');
        
+    } //End Method
+
+    public function EmployeeEdit($id) {
+
+        $data['editData'] = Admin::find($id);
+        $data['designation'] = Designation::all();
+        return view('backend.employee.employee_reg.employee_edit',$data);
+    } //End Method
+
+    public function EmployeeUpdate(Request $request, $id) {
+
+        $admin = Admin::find($id);
+
+        $admin->name = $request->name;
+        $admin->fname = $request->fname;
+        $admin->mname = $request->mname;
+        $admin->mobile = $request->mobile;
+        $admin->address = $request->address;
+        $admin->gender = $request->gender;
+        $admin->religion = $request->religion;
+
+        $admin->designation_id = $request->designation_id;
+        $admin->dob = date('Y-m-d',strtotime($request->dob));
+
+         // insert image
+         if($request->file('image')){
+            $file = $request->file('image');
+            @unlink(public_path('upload/employee_images/'.$admin->image));
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/employee_images'),$filename);
+            $admin['image'] = $filename;
+        } // img if condition
+        $admin->save();
+
+        return redirect()->route('employee.registration.view')->with('success', 'Employee Registration Updated Successfully');
+
     } //End Method
 
 }

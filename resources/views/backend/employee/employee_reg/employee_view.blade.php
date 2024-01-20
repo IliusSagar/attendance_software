@@ -26,6 +26,7 @@
               <thead>
                 <tr>
                   <th>Sl</th>
+                  <th>Photo</th>
                   <th >Name</th>
                   <th >ID No</th>
                   <th>Mobile</th>
@@ -47,6 +48,9 @@
                 <tr>
                   <td>{{ $key+1 }}</td>
            
+                  <td>
+                    <img src="{{ URL('upload/employee_images/'.$employee->image)}}" alt="">
+                  </td>
                   <td>{{ $employee->name }}</td>
                   <td>{{ $employee->id_no }}</td>
                   <td>{{ $employee->mobile }}</td>
@@ -63,8 +67,8 @@
                   @endif
                   <td class="d-flex justify-content-end">
                   
-                    <a href="#" class="btn btn-primary">Edit</a>&nbsp;
-                    <a href="#" class="btn btn-danger" id="delete">Delete</a>
+                    <a href="{{ route('employee.registration.edit',$employee->id) }}" class="btn btn-primary">Edit</a>&nbsp;
+                    <a href="#" class="btn btn-danger" id="delete">Details</a>
                   </td>
                   @endforeach
                  
