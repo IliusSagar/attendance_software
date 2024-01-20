@@ -8,13 +8,11 @@
 
 <div class="content-wrapper ">
     <div class="page-header">
-      <h3 class="page-title">Employee List</h3>
+      <h3 class="page-title">Employee Salary List</h3>
 
 
 
-      <nav aria-label="breadcrumb">
-        <a href="{{ route('employee.registration.add')}}" class="btn btn-primary">Add Employee</a>
-      </nav>
+    
     </div>
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card ">
@@ -34,9 +32,7 @@
                   <th>Join Date</th>
                   <th>Salary</th>
                   <th>Email</th>
-                  @if(Auth::guard('admin')->user()->usertype == "Admin")
-                  <th>Code</th>
-                  @endif
+                 
              
                   <th class="d-flex justify-content-end">Action</th>
         
@@ -44,29 +40,26 @@
               </thead>
               <tbody>
 
-                @foreach($allData as $key => $employee)
+                @foreach($allData as $key => $value)
                 <tr>
                   <td>{{ $key+1 }}</td>
            
                   <td>
-                    <img src="{{ URL('upload/employee_images/'.$employee->image)}}" alt="">
+                    <img src="{{ URL('upload/employee_images/'.$value->image)}}" alt="">
                   </td>
-                  <td>{{ $employee->name }}</td>
-                  <td>{{ $employee->id_no }}</td>
-                  <td>{{ $employee->mobile }}</td>
-                  <td>{{ $employee->gender }}</td>
-                  <td>{{ $employee->join_date }}</td>
-                  <td>{{ $employee->salary }}</td>
-                  <td>{{ $employee->email }}</td>
-                  
+                  <td>{{ $value->name }}</td>
+                  <td>{{ $value->id_no }}</td>
+                  <td>{{ $value->mobile }}</td>
+                  <td>{{ $value->gender }}</td>
+                  <td>{{ $value->join_date }}</td>
+                  <td>{{ $value->salary }}</td>
+                  <td>{{ $value->email }}</td>
+                
 
-                  @if(Auth::guard('admin')->user()->usertype == "Admin")
-                  <td>{{ $employee->code }}</td>
-                  @endif
                   <td class="d-flex justify-content-end">
                   
-                    <a href="{{ route('employee.registration.edit',$employee->id) }}" class="btn btn-primary">Edit</a>&nbsp;
-                    <a target="_blank" href="{{ route('employee.registration.details',$employee->id) }}" class="btn btn-danger" >Details</a>
+                    <a title="Increment" href="{{ route('employee.salary.increment',$value->id) }}" class="btn btn-primary"><i class="fa fa-plus-circle"></i></a>&nbsp;
+                    <a title="Details" target="_blank" href="{{ route('employee.salary.details',$value->id) }}" class="btn btn-danger" >Details</a>
                   </td>
                   @endforeach
                  

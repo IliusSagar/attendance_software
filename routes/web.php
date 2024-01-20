@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EmployeeRegController;
+use App\Http\Controllers\EmployeeSalaryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +51,13 @@ Route::group(['middleware'=>'admin'],function(){
     Route::post('reg/employee/update/{id}', [EmployeeRegController::class, 'EmployeeUpdate'])->name('update.employee.registration');
     Route::get('reg/employee/details/{id}', [EmployeeRegController::class, 'EmployeeDetails'])->name('employee.registration.details');
 
-});
+    // Employee Salary All Routes
+    Route::get('salary/employee/view', [EmployeeSalaryController::class, 'SalaryView'])->name('employee.salary.view');
+    Route::get('salary/employee/increment/{id}', [EmployeeSalaryController::class, 'SalaryIncrement'])->name('employee.salary.increment');
+    Route::post('salary/employee/store/{id}', [EmployeeSalaryController::class, 'SalaryStore'])->name('update.increment.store');
+    Route::get('salary/employee/details/{id}', [EmployeeSalaryController::class, 'SalaryDetails'])->name('employee.salary.details');
+
+}); 
 
 Auth::routes();
 
