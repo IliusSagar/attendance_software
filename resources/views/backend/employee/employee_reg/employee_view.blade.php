@@ -68,7 +68,7 @@
                   <td class="d-flex justify-content-end">
                   
                     <a href="{{ route('employee.registration.edit',$employee->id) }}" class="btn btn-primary">Edit</a>&nbsp;
-                    <a href="#" class="btn btn-danger" id="delete">Details</a>
+                    <a target="_blank" href="{{ route('employee.registration.details',$employee->id) }}" class="btn btn-danger" >Details</a>
                   </td>
                   @endforeach
                  

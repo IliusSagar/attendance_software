@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Designation;
 use App\Models\EmployeeSallaryLog;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
+
 
 class EmployeeRegController extends Controller
 {
@@ -137,6 +140,13 @@ class EmployeeRegController extends Controller
 
         return redirect()->route('employee.registration.view')->with('success', 'Employee Registration Updated Successfully');
 
+    } //End Method
+
+    public function EmployeeDetails($id){
+        $data['details'] = Admin::find($id);
+
+        $pdf = Pdf::loadView('backend.employee.employee_reg.employee_details_pdf', $data);
+        return $pdf->stream('document.pdf');
     } //End Method
 
 }

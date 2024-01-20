@@ -29,4 +29,8 @@ class Admin extends Authenticatable
         'join_date',
         'designation_id',
     ];
+
+    public function designation() {
+        return $this->belongsTo(Designation::class, 'designation_id','id');
+    }
 }
