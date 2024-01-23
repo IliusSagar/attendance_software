@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountSalaryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Backend\AdminController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\EmployeeLeaveController;
 use App\Http\Controllers\EmployeeLeavePurposeController;
 use App\Http\Controllers\EmployeeRegController;
 use App\Http\Controllers\EmployeeSalaryController;
+use App\Http\Controllers\MonthlySalaryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +85,17 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('attendance/employee/details/{date}', [EmployeeAttendanceController::class, 'AttendanceDetails'])->name('employee.attendance.details');
     Route::get('attendance/employee/edit/{date}', [EmployeeAttendanceController::class, 'AttendanceEdit'])->name('employee.attendance.edit');
     Route::post('attendance/employee/update/{date}', [EmployeeAttendanceController::class, 'AttendanceUpdate'])->name('employee.attendance.update');
+
+    // Employee Monthly Salary All Routes
+    Route::get('monthly/salary/view', [MonthlySalaryController::class, 'MonthlySalaryView'])->name('employee.monthly.salary');
+    Route::get('monthly/salary/get', [MonthlySalaryController::class, 'MonthlySalaryGet'])->name('employee.monthly.salary.get');
+    Route::get('monthly/salary/payslip/{employee_id}', [MonthlySalaryController::class, 'MonthlySalaryPayslip'])->name('employee.monthly.salary.payslip');
+
+    // Employee Salary Routes
+    Route::get('account/salary/view', [AccountSalaryController::class, 'AccountSalaryView'])->name('account.salary.view');
+    Route::get('account/salary/add', [AccountSalaryController::class, 'AccountSalaryAdd'])->name('account.salary.add');
+    Route::get('account/salary/getemployee', [AccountSalaryController::class, 'AccountSalaryGetEmployee'])->name('account.salary.getemployee');
+    Route::post('account/salary/store', [AccountSalaryController::class, 'AccountSalaryStore'])->name('account.salary.store');
 
 }); 
 
