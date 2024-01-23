@@ -6,54 +6,50 @@
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<div class="content-wrapper ">
+<div class="content-wrapper">
     <div class="page-header">
-      <h3 class="page-title">Employee Salary Details</h3>
+      <h3 class="page-title">Employee Leave Purpose List</h3>
 
-      <h3 class="page-title"><strong>Employee Name: </strong>{{ $details->name }}</h3>
-      <h3 class="page-title"><strong>Employee ID No: </strong>{{ $details->id_no }}</h3>
 
-    
+
+      <nav aria-label="breadcrumb">
+        <a href="{{ route('employee.leave.purpose.add')}}" class="btn btn-primary">Add Employee Leave Purpose</a>
+      </nav>
     </div>
     <div class="row">
-      <div class="col-lg-12 grid-margin stretch-card ">
+      <div class="col-lg-12 grid-margin stretch-card">
         <div class="card table-responsive">
           <div class="card-body">
            
             </p>
-            <table class="table table-bordered " >
+            <table class="table table-bordered" id="example">
               <thead>
                 <tr>
                   <th>Sl</th>
-                  <th>Previous Salary</th>
-                  <th>Increment Salary</th>
-                  <th>Present Salary</th>
-                  <th>Effected Salary</th>
+                  <th>Leave Purpose Name</th>
                  
-                 
-             
+                  <th class="d-flex justify-content-end">Action</th>
         
                 </tr>
               </thead>
               <tbody>
 
-                @foreach($salary_log as $key => $log)
+                @foreach($allData as $key => $leavepurpose)
                 <tr>
-                    <td>{{ $key+1 }}</td>
-                    <td>{{ $log->previous_salary }}</td>
-                    <td>{{ $log->increment_salary }}</td>
-                    <td>{{ $log->present_salary }}</td>
-                    <td>{{ $log->effected_salary }}</td>
-                
+                  <td>{{ $key+1 }}</td>
+           
+                  <td>{{ $leavepurpose->name }}</td>
+                  
 
-                 
-                  @endforeach
+                  <td class="d-flex justify-content-end">
+                  
+                    <a href="{{ route('employee.leave.purpose.edit',$leavepurpose->id) }}" class="btn btn-primary">Edit</a>&nbsp;
+                    <a href="{{ route('employee.leave.purpose.delete',$leavepurpose->id) }}" class="btn btn-danger" id="delete">Delete</a>
+                  </td>
                  
                 </tr>
-
+                @endforeach
                
-
-                 
            
 
               </tbody>

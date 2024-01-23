@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\DesignationController;
+use App\Http\Controllers\EmployeeLeaveController;
+use App\Http\Controllers\EmployeeLeavePurposeController;
 use App\Http\Controllers\EmployeeRegController;
 use App\Http\Controllers\EmployeeSalaryController;
 
@@ -56,6 +58,18 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('salary/employee/increment/{id}', [EmployeeSalaryController::class, 'SalaryIncrement'])->name('employee.salary.increment');
     Route::post('salary/employee/store/{id}', [EmployeeSalaryController::class, 'SalaryStore'])->name('update.increment.store');
     Route::get('salary/employee/details/{id}', [EmployeeSalaryController::class, 'SalaryDetails'])->name('employee.salary.details');
+
+    // Employee Leave Purpose All Routes
+    Route::get('leave/purpose/employee/view', [EmployeeLeavePurposeController::class, 'LeavePurposeView'])->name('employee.leave.purpose.view');
+    Route::get('leave/purpose/employee/add', [EmployeeLeavePurposeController::class, 'LeavePurposeAdd'])->name('employee.leave.purpose.add');
+    Route::post('leave/purpose/employee/store', [EmployeeLeavePurposeController::class, 'LeavePurposeStore'])->name('employee.leave.purpose.store');
+    Route::get('leave/purpose/employee/delete/{id}', [EmployeeLeavePurposeController::class, 'LeavePurposeDelete'])->name('employee.leave.purpose.delete');
+    Route::get('leave/purpose/employee/edit/{id}', [EmployeeLeavePurposeController::class, 'LeavePurposeEdit'])->name('employee.leave.purpose.edit');
+    Route::post('leave/purpose/employee/update/{id}', [EmployeeLeavePurposeController::class, 'LeavePurposeUpdate'])->name('employee.leave.purpose.update');
+
+    // Employee Leave All Routes
+    Route::get('leave/employee/view', [EmployeeLeaveController::class, 'LeaveView'])->name('employee.leave.view');
+    Route::get('leave/employee/add', [EmployeeLeaveController::class, 'LeaveAdd'])->name('employee.leave.add');
 
 }); 
 

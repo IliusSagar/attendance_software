@@ -8,12 +8,13 @@
 
 <div class="content-wrapper ">
     <div class="page-header">
-      <h3 class="page-title">Employee Salary Details</h3>
+      <h3 class="page-title">Employee Leave</h3>
 
-      <h3 class="page-title"><strong>Employee Name: </strong>{{ $details->name }}</h3>
-      <h3 class="page-title"><strong>Employee ID No: </strong>{{ $details->id_no }}</h3>
 
-    
+
+      <nav aria-label="breadcrumb">
+        <a href="{{ route('employee.leave.add')}}" class="btn btn-primary">Add Employee Leave</a>
+      </nav>
     </div>
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card ">
@@ -21,32 +22,33 @@
           <div class="card-body">
            
             </p>
-            <table class="table table-bordered " >
+            <table class="table table-bordered " id="example">
               <thead>
                 <tr>
                   <th>Sl</th>
-                  <th>Previous Salary</th>
-                  <th>Increment Salary</th>
-                  <th>Present Salary</th>
-                  <th>Effected Salary</th>
-                 
-                 
+                  {{-- <th>Photo</th> --}}
+                  <th >Name</th>
+                  <th >ID No</th>
+                  <th>Purpose</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
              
+                  <th class="d-flex justify-content-end">Action</th>
         
                 </tr>
               </thead>
               <tbody>
 
-                @foreach($salary_log as $key => $log)
+                @foreach($allData as $key => $leave)
                 <tr>
-                    <td>{{ $key+1 }}</td>
-                    <td>{{ $log->previous_salary }}</td>
-                    <td>{{ $log->increment_salary }}</td>
-                    <td>{{ $log->present_salary }}</td>
-                    <td>{{ $log->effected_salary }}</td>
-                
-
-                 
+                  <td>{{ $key+1 }}</td>
+           
+                  
+                  <td class="d-flex justify-content-end">
+                  
+                    <a href="#" class="btn btn-primary">Edit</a>&nbsp;
+                    <a target="_blank" href="#" class="btn btn-danger" id="delete">Delete</a>
+                  </td>
                   @endforeach
                  
                 </tr>

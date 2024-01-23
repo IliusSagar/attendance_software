@@ -12,13 +12,13 @@
 
 
 
-    
+
     </div>
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card ">
         <div class="card table-responsive">
           <div class="card-body">
-           
+
             </p>
             <table class="table table-bordered " id="example">
               <thead>
@@ -32,10 +32,10 @@
                   <th>Join Date</th>
                   <th>Salary</th>
                   <th>Email</th>
-                 
-             
+
+
                   <th class="d-flex justify-content-end">Action</th>
-        
+
                 </tr>
               </thead>
               <tbody>
@@ -43,7 +43,7 @@
                 @foreach($allData as $key => $value)
                 <tr>
                   <td>{{ $key+1 }}</td>
-           
+
                   <td>
                     <img src="{{ URL('upload/employee_images/'.$value->image)}}" alt="">
                   </td>
@@ -54,21 +54,21 @@
                   <td>{{ $value->join_date }}</td>
                   <td>{{ $value->salary }}</td>
                   <td>{{ $value->email }}</td>
-                
+
 
                   <td class="d-flex justify-content-end">
-                  
+
                     <a title="Increment" href="{{ route('employee.salary.increment',$value->id) }}" class="btn btn-primary"><i class="fa fa-plus-circle"></i></a>&nbsp;
                     <a title="Details" target="_blank" href="{{ route('employee.salary.details',$value->id) }}" class="btn btn-danger" >Details</a>
                   </td>
                   @endforeach
-                 
+
                 </tr>
 
-               
 
-                 
-           
+
+
+
 
               </tbody>
             </table>
@@ -84,7 +84,7 @@
         toastr.success("{{ session("success") }}");
     </script>
     @endif
-   
+
     @if(Session::has('error'))
     <script>
         toastr.error("{{ session("error") }}");
@@ -92,7 +92,6 @@
     @endif
 
     <script>
-
         $('#example').DataTable( {
             dom: 'Bfrtip',
             buttons: [
