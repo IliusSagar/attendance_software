@@ -6,7 +6,7 @@
 <div class="content-wrapper">
 
     <div class="page-header">
-        <h3 class="page-title">Add Employee Leave</h3>
+        <h3 class="page-title">Edit Employee Leave</h3>
      
       </div>
 
@@ -15,7 +15,7 @@
           <div class="card">
             <div class="card-body">
           
-              <form class="forms-sample" action="{{ route('store.employee.leave') }}" method="post" > 
+              <form class="forms-sample" action="{{ route('update.employee.leave',$editData->id) }}" method="post" > 
                 @csrf 
 
                <div class="row">
@@ -26,7 +26,7 @@
                         <select name="employee_id"  required class="form-control">
                             <option value="" selected="" disabled="">Select Employee Name</option>
                            @foreach($employees as $employee)
-                            <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                           <option value="{{ $employee->id }}" {{ ($editData->employee_id == $employee->id)? 'selected': '' }}>{{ $employee->name }}</option>
                             @endforeach
                         </select>
                           
@@ -37,7 +37,7 @@
                     <div class="form-group">
 
                         <label class="form-label">Start Date <span class="text-danger">*</span></label>
-                        <input type="date" name="start_date" class="form-control" required="" >
+                        <input type="date" name="start_date" class="form-control" required="" value="{{ $editData->start_date }}">
    
                       </div>
                 </div>
@@ -51,7 +51,7 @@
                         <select name="leave_purpose_id" id="leave_purpose_id" required class="form-control">
                             <option value="" selected="" disabled="">Select Leave Purpose</option>
                            @foreach($leave_purpose as $leave)
-                            <option value="{{ $leave->id }}">{{ $leave->name }}</option>
+                           <option value="{{ $leave->id }}" {{ ($editData->leave_purpose_id == $leave->id)? 'selected': '' }}>{{ $leave->name }}</option>
                             @endforeach
                             <option value="0">New Purpose</option>
                         </select>
@@ -68,7 +68,7 @@
                 <div class="form-group">
 
                     <label class="form-label">End Date <span class="text-danger">*</span></label>
-                    <input type="date" name="end_date" class="form-control" required="" >
+                    <input type="date" name="end_date" class="form-control" required=""  value="{{ $editData->end_date }}">
 
                   </div>
             </div>
@@ -78,7 +78,7 @@
 
 
               
-                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button type="submit" class="btn btn-primary mr-2">Update</button>
                 <a  class="btn btn-light" href="">Cancel</a>
               </form>
 

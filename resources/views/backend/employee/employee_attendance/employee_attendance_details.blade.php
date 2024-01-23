@@ -6,60 +6,49 @@
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<div class="content-wrapper ">
+<div class="content-wrapper">
     <div class="page-header">
-      <h3 class="page-title">Employee Leave</h3>
+      <h3 class="page-title">Employee Attendance Details</h3>
 
 
 
-      <nav aria-label="breadcrumb">
-        <a href="{{ route('employee.leave.add')}}" class="btn btn-primary">Add Employee Leave</a>
-      </nav>
+     
     </div>
     <div class="row">
-      <div class="col-lg-12 grid-margin stretch-card ">
+      <div class="col-lg-12 grid-margin stretch-card">
         <div class="card table-responsive">
           <div class="card-body">
            
             </p>
-            <table class="table table-bordered " id="example">
+            <table class="table table-bordered" id="example">
               <thead>
                 <tr>
                   <th>Sl</th>
-                  {{-- <th>Photo</th> --}}
-                  <th >Name</th>
-                  <th >ID No</th>
-                  <th>Purpose</th>
-                  <th>Start Date</th>
-                  <th>End Date</th>
-             
-                  <th class="d-flex justify-content-end">Action</th>
+                  <th>Name</th>
+                              <th>ID No</th>
+                  <th>Date</th>
+                 
+                  <th>Attend Status</th>
         
                 </tr>
               </thead>
               <tbody>
 
-                @foreach($allData as $key => $leave)
+                @foreach($details as $key => $value)
                 <tr>
                   <td>{{ $key+1 }}</td>
-                  <td>{{ $leave['admin']['name'] }}</td>
-                  <td>{{ $leave['admin']['id_no'] }}</td>
-                  <td>{{ $leave['purpose']['name'] }}</td>
-                  <td>{{ $leave->start_date }}</td>
-                  <td>{{ $leave->end_date }}</td>
+           
+                  <td>{{ $value['admin']['name'] }}</td>
+                    <td>{{ $value['admin']['id_no']  }}</td>
+                    <td>{{ date('d-m-Y',strtotime($value->date))  }}</td>
+                    <td>{{ $value->attend_status  }}</td>
                   
-                  <td class="d-flex justify-content-end">
-                  
-                    <a href="{{ route('employee.leave.edit',$leave->id) }}" class="btn btn-primary">Edit</a>&nbsp;
-                    <a href="{{ route('employee.leave.delete',$leave->id) }}" class="btn btn-danger" id="delete">Delete</a>
-                  </td>
-                  @endforeach
+
+                 
                  
                 </tr>
-
+                @endforeach
                
-
-                 
            
 
               </tbody>

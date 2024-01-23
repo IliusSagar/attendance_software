@@ -20,7 +20,7 @@
             <li class="nav-item"> <a class="nav-link" href="{{ route('employee.salary.view')}}">Employee Salary</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{ route('employee.leave.purpose.view')}}">Employee Leave Purpose</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{ route('employee.leave.view')}}">Employee Leave</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Employee Attendance</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ route('employee.attendance.view')}}">Employee Attendance</a></li>
             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Employee Monthly Salary</a></li>
           </ul>
         </div>
