@@ -62,3 +62,14 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+## ZKTeco Device
+
+Need to you cron job to sync the device & software. Here is the command: 
+* * * * * cd /path-to-your-project && php artisan SyncDevice:run >> /dev/null 2>&1
+
+## MYSQL Changes
+`uid` is added to user table (admins table in this case). this uid is the user_id of the device. 
+
